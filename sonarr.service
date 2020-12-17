@@ -1,0 +1,22 @@
+# apt installs for me ... this is only here for reference
+
+[Unit]
+Description=Sonarr Daemon
+After=network.target
+
+[Service]
+User=media
+Group=medialab
+
+Type=simple
+
+# Change the path to Radarr or mono here if it is in a different location for you.
+ExecStart=/usr/bin/mono --debug /opt/NzbDrone/NzbDrone.exe -nobrowser
+TimeoutStopSec=20
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/sonarr.service &&
+sudo systemctl enable sonarr.service &&
+sudo systemctl start sonarr.service
